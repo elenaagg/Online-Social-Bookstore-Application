@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <title>User Dashboard</title>
+</head>
+
+<body>
+<a th:href="@{/user/Search}" class="btn btn-primary btn-lg" style="margin-right: 90px">Go Back</a>
+<a th:href="@{/user/dashboard}" class="btn btn-primary btn-lg" style="margin-right: 10px">User Dashboard</a>
+
+<div class="container-fluid text-center">
+    <h3  class="display-6">Social Bookstore</h3>
+    <h4>Logged as: <span sec:authentication="name"></span></h4>
+</div>
+<h2>Search Results</h2>
+<table class="table table-bordered table-striped table-dark">
+    <tr>
+        <th>Book Title</th>
+        <th>Authors</th>
+        <th>Owner</th>
+        <th>Action</th>
+    </tr>
+    <tbody>
+    <tr th:each="book : ${bookss}">
+        <td th:text="${book!= null ? book.bookTitle : ''}" />
+        <td th:text="${book!= null ? book.authors : ''}" />
+        <td th:text="${book!= null ? book.username : ''}" />
+        <td>
+            <a th:href="@{/requestBook(bookTitle=${book.bookTitle},owner=${book.username})}" class="btn btn-info btn-sm" onclick="if (!(confirm('Are you sure you want to request for this book?'))) return false">Request</a>
+            <a href="#"
+               class="btn btn-info btn-sm"
+               style="margin-right: 10px"
+               onclick="toggleDetails(this); return false;">See Details</a>
+        </td>
+    </tr>
+    <tr class="details-row">
+        <td colspan="4">
+            <div>
+                <strong>Category:</strong> <span th:text="${book!= null ? book.category : ''}"></span><br/>
+                <strong>Summary:</strong> <span th:text="${book!= null ? book.summary : ''}"></span>
+            </div>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<script>
+    function toggleDetails(button) {
+        var detailsRow = button.closest('tr').nextElementSibling;
+        if (detailsRow.style.display === 'none' || detailsRow.style.display === '') {
+            detailsRow.style.display = 'table-row';
+            button.textContent = 'Hide Details';
+        } else {
+            detailsRow.style.display = 'none';
+            button.textContent = 'See Details';
+        }
+    }
+</script>
+</body>
+</html>

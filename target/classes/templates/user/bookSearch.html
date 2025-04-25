@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <title>User Dashboard</title>
+</head>
+
+
+
+
+<body>
+<a th:href="@{/user/dashboard}" class="btn btn-primary btn-lg" style="margin-right: 90px"> Go Back</a>
+<div class="container-fluid text-center">
+    <h3  class="display-6">Social Bookstore</h3>
+    <h4>Logged as: <span sec:authentication="name"></span></h4>
+</div>
+<a th:href="@{/showRecommendations}" class="btn btn-primary btn-lg" style="margin-right: 90px">Recommendations</a>
+<h1>Search Books</h1>
+<form th:action="@{/search}" method="get">
+    <input type="text" name="bookTitle" placeholder="Title">
+    <input type="text" name="authors" placeholder="Authors">
+
+    <select name="searchStrategy">
+        <option value="exact">EXACT</option>
+        <option value="approximate">APPROXIMATE</option>
+    </select>
+    <button type="submit">Search now</button>
+</form>
+</body>
+</html>
