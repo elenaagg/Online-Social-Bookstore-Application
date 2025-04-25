@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <title>User Dashboard</title>
+</head>
+
+
+
+<body>
+<div class="container">
+
+    <h2>Form</h2>
+
+    <br> <br> <hr> <br> <br>
+
+    <form
+            action="@{/saveProfile}" th:action="@{/saveProfile}" th:object="${userprofile}" method="post">
+        <input type="text" th:field="*{fullName}" placeholder="Full_Name" /> <br/><br/>
+        <input type="text" th:field="*{address}" placeholder="Address" /> <br/><br/>
+        <input type="text" th:field="*{age}" placeholder="Age" /> <br/><br/>
+        <input type="text" th:field="*{phoneNumber}" placeholder="Phone_Number" /> <br/><br/>
+        <input type="text" th:field="*{favouriteBookAuthors}" placeholder="Favourite_Book_Authors" /> <br/><br/>
+        <input type="text" th:field="*{favouriteBookCategories}" placeholder="Favourite_Book_Categories" /> <br/><br/>
+
+        <!--<select th:field="*{favouriteBookCategories}" multiple="multiple" required>
+            <option value="">Category Examples</option>
+            <option value="Art">Art</option>
+            <option value="Comic">Comic</option>
+            <option value="Fantasy">Fantasy</option>
+            <option value="Fiction">Fiction</option>
+            <option value="Biographies">Biographies</option>
+            <option value="History">History</option>
+            <option value="Science">Science</option>
+            <option value="Literature">Literature</option>
+            <option value="Adventure">Adventure</option>
+            <option value="Crime">Crime</option>
+            <option value="Other">Other</option>
+        </select> <br/><br/>-->
+
+
+
+
+
+        <button type="submit" class="btn btn-info col-2">Submit</button>
+        <a th:href="@{/user/dashboard}" class="btn btn-info col-2"> User Dashboard</a>
+
+        <div th:if="${param.error}"><p>Registration Error.</p></div> <br/>
+
+        <div th:utext="${successMessage}"></div>
+    </form>
+
+
+</div>
+
+
+</body>
+</html>
+
+
+
+
