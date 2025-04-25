@@ -6,9 +6,9 @@ The objective of this project is to develop an online social bookstore applicati
 # Following, there is a list of technologies, frameworks and tools that were used for the project.
 
 
-# Java
-# Spring Boot
-# MySql, MySQL Workbench
-# Junit
-# Eclipse, Intellij
-# PlantUML
+- Java
+- Spring Boot
+- MySQL, MySQL Workbench
+- JUnit
+- Eclipse, IntelliJ IDEA
+- PlantUML
